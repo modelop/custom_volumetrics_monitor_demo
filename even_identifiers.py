@@ -31,6 +31,10 @@ def metrics(df):
         raise ValueError("No identifier columns found in extended schema")
 
     id_column = MONITORING_PARAMETERS["identifier_columns"][0]
+
+    if id_column not in df.columns:
+        raise ValueError("Column not found in input dataframe: {}".format(id_column))
+
     even_identifiers = df[df[id_column] % 2 == 0]
     count_even_identifiers = even_identifiers.shape[0]
 

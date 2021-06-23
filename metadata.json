@@ -1,6 +1,6 @@
 {
     "tags": [],
-    "name": "Custom Volumetric Monitor (Demo): Even Identifiers",
+    "name": "(Custom) Volumetric Monitor: Even Identifiers",
     "description": "Model to return the number of identifiers that are even",
     "modelCategory": "MODEL_MONITORING_MODEL",
     "defaultAssociationRole": "PERFORMANCE_MODEL",

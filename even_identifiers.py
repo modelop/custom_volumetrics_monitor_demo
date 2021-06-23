@@ -27,22 +27,24 @@ def init(job_json):
 
 # modelop.metrics
 def metrics(df):
+    if not MONITORING_PARAMETERS["identifier_columns"]:
+        raise ValueError("No identifier columns found in extended schema")
+
     id_column = MONITORING_PARAMETERS["identifier_columns"][0]
-    even_identifiers = df[ df[id_column] % 2 == 0]
+    even_identifiers = df[df[id_column] % 2 == 0]
     count_even_identifiers = even_identifiers.shape[0]
 
     test_result = {
-            "test_name": "Count of Even Identifiers",
-            "test_category": "volumetrics",
-            "test_type": "count",
-            "test_id": "volumetrics_count_even",
-            "values": {"even_count": count_even_identifiers},
+        "test_name": "Count of Even Identifiers",
+        "test_category": "volumetrics",
+        "test_type": "count",
+        "test_id": "volumetrics_count_even",
+        "values": {"even_count": count_even_identifiers},
     }
 
     result = {
         # Flat top level metric of count (for MLCs)
         "even_count": count_even_identifiers,
-
         # Complete test results
         "volumetrics": [test_result],
     }
@@ -58,4 +60,5 @@ if __name__ == "__main__":
     df = pandas.read_json("df_sample_scored.json", lines=True)
 
     from pprint import pprint
+
     pprint(next(metrics(df)))

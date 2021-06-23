@@ -11,4 +11,4 @@ To test this monitor, follow these steps:
 - Import the [German credit model](https://github.com/merhi-odg/german_credit_python/tree/extended_schema) (`extended_schema` branch) and create a snapshot.
 - In the German credit snapshot, add this monitor. The association role `PERFORMANCE_MODEL` should already be selected, and for the sample data asset add the `df_sample_scored.json` asset that's already stored in the German credit model.
 - Run the monitor either via a schedule or manual run, and the test result should be a "Count of Even Identifiers" table with an `even_count` column
--
+
